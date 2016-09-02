@@ -46,6 +46,12 @@ gem "uglifier"
 #
 # gem "rails-assets-jquery.maskedinput", source: "https://rails-assets.org"
 
+# Debug performance problems
+gem "flamegraph"
+gem "memory_profiler"
+gem "rack-mini-profiler"
+gem "stackprof"
+
 group :development do
   gem "refills"
   gem "web-console"

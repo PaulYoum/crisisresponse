@@ -5,6 +5,8 @@ class ApplicationController < ActionController::Base
 
   helper_method :theme, :officer_signed_in?, :current_officer, :demo_mode?
 
+  before_filter :check_rack_mini_profiler
+
   def authenticate_officer!
     unless officer_signed_in?
       redirect_to(
@@ -42,5 +44,13 @@ class ApplicationController < ActionController::Base
 
   def demo_mode?
     ENV.fetch("DEMO_MODE") == "true"
+  end
+
+  private
+
+  def check_rack_mini_profiler
+    # if current_officer && current_officer.can_view_debug_information?
+      Rack::MiniProfiler.authorize_request
+    # end
   end
 end

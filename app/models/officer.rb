@@ -25,6 +25,10 @@ class Officer < ActiveRecord::Base
     username_defined_in_env_variable?("CAN_VIEW_WITHOUT_RESPONSE_PLANS")
   end
 
+  def can_view_debug_information?
+    username_defined_in_env_variable?("CAN_VIEW_DEBUG_INFORMATION")
+  end
+
   private
 
   def username_defined_in_env_variable?(env_var)
