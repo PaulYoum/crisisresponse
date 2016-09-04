@@ -17,6 +17,21 @@ services:
     ports:
       - "5432:5432"
 
+  elk:
+    image: willdurand/elk
+    ports:
+      - 81:80
+    volumes_from:
+      - web
+
+  logspout:
+    image: bekt/logspout-logstash
+    restart: on-failure
+    environment:
+      ROUTE_URIS: logstash://logstash:5000
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+
   restore:
     build: containers/restore
     entrypoint: |
