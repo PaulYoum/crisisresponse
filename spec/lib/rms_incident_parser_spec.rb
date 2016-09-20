@@ -150,26 +150,49 @@ describe RMSIncidentParser do
     it_should_behave_like "a boolean attribute is parsed out"
   end
 
-  describe "#narrative" do
-    it "pulls the narrative from the Oracle Clob object" do
-      narrative = "Lorem Ipsum dolor si amet"
-      clob = double(read:narrative)
+  describe "#crisis_narrative" do
+    it "pulls the crisis_narrative from the Oracle Clob object" do
+      crisis_narrative = "Lorem Ipsum dolor si amet"
+      clob = double(read: crisis_narrative)
       parser = RMSIncidentParser.new("CRISIS_NARRATIVE" => clob)
 
-      expect(parser.narrative).to eq(narrative)
+      expect(parser.crisis_narrative).to eq(crisis_narrative)
     end
 
-    it "records the narrative as nil if it is empty" do
+    it "records the crisis_narrative as nil if it is empty" do
       clob = double(read: "")
       parser = RMSIncidentParser.new("CRISIS_NARRATIVE" => clob)
 
-      expect(parser.narrative).to eq(nil)
+      expect(parser.crisis_narrative).to eq(nil)
     end
 
     it "handles nil" do
       parser = RMSIncidentParser.new("CRISIS_NARRATIVE" => nil)
 
-      expect(parser.narrative).to eq(nil)
+      expect(parser.crisis_narrative).to eq(nil)
+    end
+  end
+
+  describe "#go_narrative" do
+    it "pulls the go_narrative from the Oracle Clob object" do
+      go_narrative = "Lorem Ipsum dolor si amet"
+      clob = double(read: go_narrative)
+      parser = RMSIncidentParser.new("GO_NARRATIVE" => clob)
+
+      expect(parser.go_narrative).to eq(go_narrative)
+    end
+
+    it "records the go_narrative as nil if it is empty" do
+      clob = double(read: "")
+      parser = RMSIncidentParser.new("GO_NARRATIVE" => clob)
+
+      expect(parser.go_narrative).to eq(nil)
+    end
+
+    it "handles nil" do
+      parser = RMSIncidentParser.new("GO_NARRATIVE" => nil)
+
+      expect(parser.go_narrative).to eq(nil)
     end
   end
 

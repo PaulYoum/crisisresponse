@@ -42,7 +42,7 @@ class RMSIncidentParser
     RMS_INCIDENT_BOOLEAN_ATTRIBUTES.keys +
     [
       :go_number,
-      :narrative,
+      :crisis_narrative,
       :reported_at,
       :xml_crisis_id,
     ]
@@ -72,12 +72,16 @@ class RMSIncidentParser
     data.fetch("GO_ID").strip
   end
 
-  def narrative
+  def crisis_narrative
     narrative = data.fetch("CRISIS_NARRATIVE")
 
     if narrative
       narrative.read.presence
     end
+  end
+
+  def go_narrative
+
   end
 
   def reported_at
