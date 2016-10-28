@@ -529,7 +529,7 @@ RMS::Person.create!(
 )
 roger.update!(location_supportive_housing: true)
 
-ResponsePlan.create!(
+roger_plan = ResponsePlan.create!(
   person: roger,
   author: officer,
   approver: sergeant,
@@ -577,6 +577,7 @@ ResponsePlan.create!(
     }
   ],
 )
+roger_plan.safety_concerns.create!(category: "weapon", title: "Owns a pistol", description: "SMITH has a concealed carry permit", go_number: "20160000123456")
 
 roger_narratives = [
   "I was on a SPD issued mountain bike in a fully authorized bicycle uniform with my partner Officer Johnson (0000). At approximately 1242 hours we were on routine patrol when I witnessed John Smith (W/M 01/01/1985) punch a light pole and proceed to walk into the street.  I contacted Smith and asked him what was wrong. Smith was calm and compliant and told me that he felt like killing himself. Smith said that approximately three days ago he had overdosed on his medication and was admitted to County Hospital in Seattle. Since Smith overdosed on his medication they took it from him and now he hasn't had his prescription meds in five days.  Smith asked if he could go to the hospital. I requested an AMR to transport Smith to County Hospital.  Smith was compliant and calm during our entire contact.  I screened the voluntary committal with A/Sgt Johnson at the precinct.",
@@ -664,8 +665,6 @@ angela_narratives = [
   "I was working the marked patrol unit in Seattle.  I responded to a person in crisis.  Radio reported that the complainant would be waiting out front of the listed address and that they want police to call the mobile crisis team.  I arrived to the listed location with my partner.  I contacted Smith.  Smith is reporting that she called 911 to get in touch with the mobile Crisis Team.  Smith states that she missed the Hope link bus that would take her home.  Smith reports that she has multiple personality issues and takes medications.   She said that she has no thoughts of harming herself or anyone else tonight.  Her main concern is to get a ride home so she can take care of her pets and have her medications.  She has multiple bags and luggage items with her and is unable to carry everything home.  I called the Mobile Crisis team for Smith and let them know what was going on tonight.  They said they would be by to help Smith get home. Smith states that she feels fine waiting by herself until the MCT arrives.  I confirmed that Smith was safe and let her know that if anything changes she can call 911 back.",
   "I was dispatched to check for someone walking in the middle of the street and throwing bricks around. I located the subject. I asked the subject if they were okay and if they needed any assistance. She said something about her cat and something about God. She then climbed up some metal scaffolding located in the park. The scaffolding was approximately 20-25 feet high. It was too dangerous for officers to go up there and attempt to have a dialogue with her. She began to scream about her \"batteries being low and needed lithium to charge them\". She then took off most of her clothes and showed her buttocks to officers. I was able to position my in car camera to get her actions on video. I immediately called for a CIT Unit to respond.   Once she was done screaming on top of the scaffolding she grabbed her sweat pants and climbed down. She wrapped the sweat pants around her head and took off running in the middle of the road. Officers were able to intercept her mid block. Officers were concerned she may get hit by a car. At this time CRT arrived on scene.   She then climbed into some sticker bushes with bare feat. It was obvious the subject was in some sort of crisis and was not able to care for herself. The CRT Officer asked the subject her name. She replied \"Amanda\". MHP knew the subject from previous contacts as Smith. A routine records check showed the subject was assaultive towards officers and needs mental health care. CRT Officer explained to Smith that we were detaining her for her own safety. Smith then stated we were making her feel \"purple\". Smith did have an injury on her face, her cheek and eye were all swollen. When asked about it and said she was punched in the face by a black guy who lives in a nearby apartment building. She said she called 911 last night but I am unable to find any record of it. She then began to make animal noises.   Due to the fact that Smith was running in the road, was climbing scaffolding and taking her clothes off, was saying things that did not make sense and had an injury on her face that most likely needed some medical attention officers felt she needed to go to the hospital. AMR responded to the scene. Smith was transported to hospital for an involuntary commitment. MHP was able to get me Smith's case manager's information. Her case manager is Francis Jones at Mental Health Services. Smith was sent to the hospital at the same location for running into traffic.",
 ]
-
-Image.create!(source: image("smith_angela/1.png"), person: roger)
 
 add_incidents_for_person(angela_incidents, angela.rms_person, angela_narratives)
 Image.create!(source: image("smith_angela/1.png"), person: angela)

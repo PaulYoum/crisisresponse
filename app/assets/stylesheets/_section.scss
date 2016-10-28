@@ -1,4 +1,4 @@
-$icon-size: $large-spacing;
+$icon-size: 2rem;
 
 section {
   @include fill-parent;
@@ -6,6 +6,7 @@ section {
 
   .section-header {
     align-items: center;
+    display: flex;
     padding: $small-spacing $base-spacing;
     width: 100%;
   }
